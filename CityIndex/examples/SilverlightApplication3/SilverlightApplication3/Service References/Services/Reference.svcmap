@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="94a04c87-fef1-453b-a49e-6862f0b82323" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>false</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:55589/Services/ModelManagerService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ModelManagerService1.disco" MetadataType="Disco" ID="111e73ec-ac90-483e-9e76-81ac4d6a09ca" SourceId="1" SourceUrl="http://localhost:55589/Services/ModelManagerService.svc?disco" />
+    <MetadataFile FileName="ModelManagerService.xsd" MetadataType="Schema" ID="34f9c589-fe58-4d21-811e-681ca0a28b2b" SourceId="1" SourceUrl="http://localhost:55589/Services/ModelManagerService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ModelManagerService1.xsd" MetadataType="Schema" ID="67391c89-d6a9-435c-8dd6-829da930b38c" SourceId="1" SourceUrl="http://localhost:55589/Services/ModelManagerService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ModelManagerService2.xsd" MetadataType="Schema" ID="db3ae0ec-5875-4abb-9bfe-21df57b54694" SourceId="1" SourceUrl="http://localhost:55589/Services/ModelManagerService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ModelManagerService2.wsdl" MetadataType="Wsdl" ID="b02a5d02-9f68-4aaf-9528-19f000f8a412" SourceId="1" SourceUrl="http://localhost:55589/Services/ModelManagerService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="ModelManagerService21.wsdl" MetadataType="Wsdl" ID="99dee44c-ef4a-4dff-ac93-7db04f9e2d21" SourceId="1" SourceUrl="http://localhost:55589/Services/ModelManagerService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="SilverlightApplication3.Web.ModelManagerService" CodeBehind="ModelManagerService.svc.cs" %>

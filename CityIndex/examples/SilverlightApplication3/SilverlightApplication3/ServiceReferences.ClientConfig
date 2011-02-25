@@ -1,0 +1,17 @@
+﻿<configuration>
+    <system.serviceModel>
+        <bindings>
+            <customBinding>
+                <binding name="CustomBinding_ModelManagerService">
+                    <binaryMessageEncoding />
+                    <httpTransport maxReceivedMessageSize="2147483647" maxBufferSize="2147483647" />
+                </binding>
+            </customBinding>
+        </bindings>
+        <client>
+            <endpoint address="http://localhost:55589/Services/ModelManagerService.svc"
+                binding="customBinding" bindingConfiguration="CustomBinding_ModelManagerService"
+                contract="Services.ModelManagerService" name="CustomBinding_ModelManagerService" />
+        </client>
+    </system.serviceModel>
+</configuration>

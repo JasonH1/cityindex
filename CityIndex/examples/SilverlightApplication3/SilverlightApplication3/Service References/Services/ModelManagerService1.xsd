@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:55589/Services/ModelManagerService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SilverlightApplication3.Web" />
+  <xs:element name="DoWork">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DoWorkResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/SilverlightApplication3.Web" minOccurs="0" name="DoWorkResult" nillable="true" type="q1:ArrayOfModelManagerService.NewsHeadline" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

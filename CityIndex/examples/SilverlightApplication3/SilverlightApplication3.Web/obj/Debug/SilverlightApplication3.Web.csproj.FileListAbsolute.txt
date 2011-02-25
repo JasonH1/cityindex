@@ -1,0 +1,34 @@
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\bin\SilverlightApplication3.Web.dll
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\bin\SilverlightApplication3.Web.pdb
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\bin\CIAPI.dll
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\bin\CityIndex.JsonClient.dll
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\bin\Common.Logging.dll
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\bin\Newtonsoft.Json.dll
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\bin\StreamingClient.dll
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\bin\StreamingClient.Lightstreamer.dll
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\bin\CIAPI.pdb
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\bin\CityIndex.JsonClient.pdb
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\bin\Common.Logging.pdb
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\bin\Newtonsoft.Json.pdb
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\bin\StreamingClient.pdb
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\bin\StreamingClient.Lightstreamer.pdb
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\obj\Debug\ResolveAssemblyReference.cache
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\obj\Debug\SilverlightApplication3.Web.dll
+D:\Dev Projects\SVN\devwork\projects\Demos\Silverlight\Test\SilverlightApplication3\SilverlightApplication3.Web\obj\Debug\SilverlightApplication3.Web.pdb
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\bin\SilverlightApplication3.Web.dll
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\bin\SilverlightApplication3.Web.pdb
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\bin\CIAPI.dll
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\bin\CityIndex.JsonClient.dll
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\bin\Common.Logging.dll
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\bin\Newtonsoft.Json.dll
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\bin\StreamingClient.dll
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\bin\StreamingClient.Lightstreamer.dll
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\bin\CIAPI.pdb
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\bin\CityIndex.JsonClient.pdb
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\bin\Common.Logging.pdb
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\bin\Newtonsoft.Json.pdb
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\bin\StreamingClient.pdb
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\bin\StreamingClient.Lightstreamer.pdb
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\obj\Debug\ResolveAssemblyReference.cache
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\obj\Debug\SilverlightApplication3.Web.dll
+D:\git\CityIndex\examples\SilverlightApplication3\SilverlightApplication3.Web\obj\Debug\SilverlightApplication3.Web.pdb
