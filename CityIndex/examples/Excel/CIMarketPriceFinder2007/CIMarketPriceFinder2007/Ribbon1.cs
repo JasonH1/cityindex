@@ -38,7 +38,30 @@ namespace CIMarketPriceFinder2007
             lblStatus.Label = "Not logged in";
             btnLogin.Label = "[Log in]";
         }
-        
+        private void Logout()
+        {
+            var gate = new AutoResetEvent(false);
+
+            try
+            {
+                _ctx.BeginLogOut(result =>
+                {                
+                    String msg = "Logout success!";
+                    lblStatus.Label = "Logged out.";
+                    btnLogin.Label = "[Log in]";
+                    _IsLoggedIn = false;
+                    MessageBox.Show(msg);                
+                    gate.Set();
+                }, null);
+            }
+            catch (CityIndex.JsonClient.ApiException err)
+            {
+                String msg = "Logout failed! " + err.Message;
+                MessageBox.Show(msg);
+                gate.Set();
+            }
+            gate.WaitOne();
+        }
         private void Login()
         {
             
@@ -169,10 +192,20 @@ namespace CIMarketPriceFinder2007
 
         private void btnLogin_Click(object sender, RibbonControlEventArgs e)
         {
-            Task[] tasks = new Task[]  
-            {  
-                Task.Factory.StartNew(() => Login()),  
-            };            
+            if (_IsLoggedIn)
+            {
+                Task[] tasks = new Task[]  
+                {  
+                    Task.Factory.StartNew(() => Logout()),  
+                };            
+            }
+            else
+            {
+                Task[] tasks = new Task[]  
+                {  
+                    Task.Factory.StartNew(() => Login()),  
+                };            
+            }            
         }
 
     }

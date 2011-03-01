@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CIMarketPriceFinder2007", "CIMarketPriceFinder2007\CIMarketPriceFinder2007.csproj", "{3B58754E-1F59-43CE-9313-2E2F93001B2F}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "CityIndexExcelAddInSetup", "CityIndexExcelAddInSetup\CityIndexExcelAddInSetup.vdproj", "{CDB94D5F-7A2F-48DE-93FF-537BAF7FAF30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,8 @@ Global
 		{3B58754E-1F59-43CE-9313-2E2F93001B2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B58754E-1F59-43CE-9313-2E2F93001B2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B58754E-1F59-43CE-9313-2E2F93001B2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDB94D5F-7A2F-48DE-93FF-537BAF7FAF30}.Debug|Any CPU.ActiveCfg = Debug
+		{CDB94D5F-7A2F-48DE-93FF-537BAF7FAF30}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

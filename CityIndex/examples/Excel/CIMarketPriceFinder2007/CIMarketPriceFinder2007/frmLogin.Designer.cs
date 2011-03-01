@@ -63,7 +63,7 @@
             this.textBoxUsername.Location = new System.Drawing.Point(81, 9);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(100, 20);
-            this.textBoxUsername.TabIndex = 2;
+            this.textBoxUsername.TabIndex = 1;
             // 
             // label2
             // 

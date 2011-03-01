@@ -7,9 +7,9 @@ using System.Security;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("CIMarketPriceFinder2007")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("City Index Excel Add In Examples")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("City Index")]
 [assembly: AssemblyProduct("CIMarketPriceFinder2007")]
 [assembly: AssemblyCopyright("Copyright ©  2011")]
 [assembly: AssemblyTrademark("")]
