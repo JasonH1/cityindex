@@ -49,6 +49,11 @@
             this.editBoxNo = this.Factory.CreateRibbonEditBox();
             this.buttonGroup1 = this.Factory.CreateRibbonButtonGroup();
             this.btnGetBars = this.Factory.CreateRibbonButton();
+            this.buttonGroup2 = this.Factory.CreateRibbonButtonGroup();
+            this.btnEditPattern = this.Factory.CreateRibbonButton();
+            this.buttonGroup3 = this.Factory.CreateRibbonButtonGroup();
+            this.btnSearchMarkets = this.Factory.CreateRibbonButton();
+            this.editBoxMethod = this.Factory.CreateRibbonEditBox();
             this.tab1.SuspendLayout();
             this.tab2.SuspendLayout();
             this.groupLoginInfo.SuspendLayout();
@@ -58,6 +63,8 @@
             this.box4.SuspendLayout();
             this.box5.SuspendLayout();
             this.buttonGroup1.SuspendLayout();
+            this.buttonGroup2.SuspendLayout();
+            this.buttonGroup3.SuspendLayout();
             // 
             // tab1
             // 
@@ -76,6 +83,7 @@
             // 
             this.groupLoginInfo.Items.Add(this.box1);
             this.groupLoginInfo.Items.Add(this.lblStatus);
+            this.groupLoginInfo.Items.Add(this.editBoxMethod);
             this.groupLoginInfo.Label = "Login Info";
             this.groupLoginInfo.Name = "groupLoginInfo";
             // 
@@ -101,6 +109,8 @@
             this.group1.Items.Add(this.box4);
             this.group1.Items.Add(this.box5);
             this.group1.Items.Add(this.buttonGroup1);
+            this.group1.Items.Add(this.buttonGroup2);
+            this.group1.Items.Add(this.buttonGroup3);
             this.group1.Label = "Price Bar Example";
             this.group1.Name = "group1";
             // 
@@ -148,6 +158,33 @@
             this.btnGetBars.Name = "btnGetBars";
             this.btnGetBars.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnGetBars_Click);
             // 
+            // buttonGroup2
+            // 
+            this.buttonGroup2.Items.Add(this.btnEditPattern);
+            this.buttonGroup2.Name = "buttonGroup2";
+            // 
+            // btnEditPattern
+            // 
+            this.btnEditPattern.Label = "Edit Pattern";
+            this.btnEditPattern.Name = "btnEditPattern";
+            this.btnEditPattern.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnEditPattern_Click);
+            // 
+            // buttonGroup3
+            // 
+            this.buttonGroup3.Items.Add(this.btnSearchMarkets);
+            this.buttonGroup3.Name = "buttonGroup3";
+            // 
+            // btnSearchMarkets
+            // 
+            this.btnSearchMarkets.Label = "Search Markets";
+            this.btnSearchMarkets.Name = "btnSearchMarkets";
+            this.btnSearchMarkets.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.btnSearchMarkets_Click);
+            // 
+            // editBoxMethod
+            // 
+            this.editBoxMethod.Label = "Method";
+            this.editBoxMethod.Name = "editBoxMethod";
+            // 
             // CIExcelRibbon
             // 
             this.Name = "CIExcelRibbon";
@@ -173,6 +210,10 @@
             this.box5.PerformLayout();
             this.buttonGroup1.ResumeLayout(false);
             this.buttonGroup1.PerformLayout();
+            this.buttonGroup2.ResumeLayout(false);
+            this.buttonGroup2.PerformLayout();
+            this.buttonGroup3.ResumeLayout(false);
+            this.buttonGroup3.PerformLayout();
 
         }
 
@@ -193,6 +234,11 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonBox box1;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnLogin;
         internal Microsoft.Office.Tools.Ribbon.RibbonLabel lblStatus;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup buttonGroup2;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnSearchMarkets;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnEditPattern;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup buttonGroup3;
+        internal Microsoft.Office.Tools.Ribbon.RibbonEditBox editBoxMethod;
     }
 
     partial class ThisRibbonCollection

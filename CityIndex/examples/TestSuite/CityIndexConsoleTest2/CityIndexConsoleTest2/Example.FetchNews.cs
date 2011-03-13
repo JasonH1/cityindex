@@ -32,7 +32,7 @@ namespace ConsoleSpikes
             ctx.BeginLogIn(USERNAME, PASSWORD, a =>
             {
                 ctx.EndLogIn(a);
-                
+
                 ctx.BeginListNewsHeadlines("UK", 10, newsResult =>
                 {
                     

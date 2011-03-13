@@ -30,13 +30,17 @@ namespace CIMarketPriceFinder2007
 
         private Boolean _IsLoggedIn = false;
 
+        public Dictionary<int, MarketPattern> _PatternSearch = new Dictionary<int, MarketPattern>();
+        
+
         private void Ribbon1_Load(object sender, RibbonUIEventArgs e)
         {
             editBoxMarketId.Text = "71442";
-            editBoxInterval.Text = "MINUTE";
-            editBoxNo.Text = "5";
+            editBoxInterval.Text = "DAY";
+            editBoxNo.Text = "30";
             lblStatus.Label = "Not logged in";
             btnLogin.Label = "[Log in]";
+            editBoxMethod.Text = "1";
         }
         private void Logout()
         {
@@ -62,6 +66,15 @@ namespace CIMarketPriceFinder2007
             }
             gate.WaitOne();
         }
+
+        private void EditPattern()
+        {
+            MarketPatternFinder fMarketPatternFinder = new MarketPatternFinder(_PatternSearch);
+            Application.Run(fMarketPatternFinder);
+
+            _PatternSearch = fMarketPatternFinder.getMarketPatten();
+        }    
+
         private void Login()
         {
             
@@ -208,5 +221,232 @@ namespace CIMarketPriceFinder2007
             }            
         }
 
+        private void btnSearchMarkets_Click(object sender, RibbonControlEventArgs e)
+        {
+            String marketId = editBoxMarketId.Text;
+            String interval = editBoxInterval.Text;
+
+            // The method to retrieve the data...  1) normal 2) Using tasks 3) parallel
+            Int32 method = 0;
+
+            if (_PatternSearch.Count < 2)
+            {
+                MessageBox.Show("Market Finder is only valid for pattern searching of 2 or more bars. Please click edit pattern to modify.");
+                return;
+            }
+
+            try
+            {
+                method = Int32.Parse(editBoxMethod.Text);
+                if (method < 1 || method > 3)
+                {
+                    MessageBox.Show("Method can only be integer values from 1 to 3. (Normal,Tasks,Parallel)");
+                    return;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Method can only be integer values from 1 to 3. (Normal,Tasks,Parallel)");
+                return;
+            }
+            String no = editBoxNo.Text;
+            String message = "";
+
+            String[] markets = new String[] { "99498", "99500", "99502", "99504", "99506", "99508", "99510", "99553", "99554", "99555" };
+
+            //We hardcode the market IDs for now since we cant list the markets yet currently.
+
+            Dictionary<String, PriceBarDTO[]> priceBarResults = new Dictionary<String, PriceBarDTO[]>();
+
+            //dictionary to hold our results.
+
+            if (!_IsLoggedIn)
+            {
+                Task[] logintask = new Task[]  
+                {  
+                    Task.Factory.StartNew(() => Login()),
+                };
+                Task.WaitAll(logintask);
+            }
+
+            if (!_IsLoggedIn)
+            {
+                return;
+            }
+            Microsoft.Office.Interop.Excel.Application excelObj;
+
+            excelObj = (Microsoft.Office.Interop.Excel.Application)System.Runtime.InteropServices.Marshal.GetActiveObject("Excel.Application");
+
+            Microsoft.Office.Interop.Excel.Workbook wb;
+
+            wb = excelObj.ActiveWorkbook;
+
+            Microsoft.Office.Interop.Excel.Worksheet ws;
+
+            ws = excelObj.ActiveSheet;
+            
+            Stopwatch watch = new Stopwatch();
+            watch.Start();
+            try
+            {
+                switch (method)
+                {
+                    case 1:
+                        // - Price bars via normal method...
+                        foreach (String market in markets)
+                        {
+                            priceBarResults.Add(market, GetPriceBars(market, interval, no));
+                        }    
+        
+                        break;
+                    case 2:
+                        // - Price bars via task method...
+                        Task<Dictionary<String, PriceBarDTO[]>> taskWithFactoryAndState =
+
+                           Task.Factory.StartNew<Dictionary<String, PriceBarDTO[]>>((stateObj) =>
+                           {
+                               Dictionary<String, PriceBarDTO[]> pricetasks = new Dictionary<String, PriceBarDTO[]>();
+                               for (int i = 0; i < (int)stateObj; i++)
+                               {
+                                   pricetasks.Add(markets[i], GetPriceBars(markets[i], interval, no));
+                               }
+                               return pricetasks;
+                           }, 10);
+
+                        var gate = new AutoResetEvent(false);
+
+                        try
+                        {
+                            Task.WaitAll(taskWithFactoryAndState);
+                            //setup a continuation for task
+                            taskWithFactoryAndState.ContinueWith((ant) =>
+                            {
+                                Dictionary<String, PriceBarDTO[]> result = ant.Result;
+                                priceBarResults = result;
+                                gate.Set();
+                            });
+                        }
+                        catch (AggregateException aggEx)
+                        {
+                            gate.Set();
+                            foreach (Exception ex in aggEx.InnerExceptions)
+                            {
+                                MessageBox.Show(string.Format("Caught exception '{0}'",
+                                    ex.Message));
+                            }
+                        }
+
+                        gate.WaitOne();
+                        
+                        break;
+                    case 3:
+                        // - Price bars via Parallel method...
+                        Parallel.ForEach(
+                            markets,
+                            (n, loopState, index) =>
+                            {
+                                priceBarResults.Add(markets[index], GetPriceBars(markets[index], interval, no));
+                            } //close lambda expression
+
+                        ); //close method invocation
+                        break;
+                    case 4:
+                        // not used currently....
+                        break;
+                    default:
+                        break;
+                }
+            }
+            catch (AggregateException err)
+            {
+                MessageBox.Show(String.Format("Parallel.ForEach has thrown an exception. THIS WAS NOT EXPECTED.\n{0}", err.Message));
+            }
+            watch.Stop();
+            int timeWeb = watch.Elapsed.Seconds;
+
+            int count = 0;
+            watch.Start();
+
+            int matchedBars = 0;
+            foreach (KeyValuePair<String,PriceBarDTO[]> barKeyPair in priceBarResults)
+            {
+                PriceBarDTO[] bars = barKeyPair.Value;
+
+                if (bars.Count() > 0)
+                {
+                    int max = bars.Count() - _PatternSearch.Count;
+                    int matchesneeded = _PatternSearch.Count;
+                    int matches = 0;
+                    for (int i = 0; i < max; i++)
+                    {
+                        foreach (KeyValuePair<int, MarketPattern> KeyPair in _PatternSearch)
+                        {
+                            MarketPattern pattern = KeyPair.Value;
+                            int index = KeyPair.Key;
+                            switch (pattern.priceType)
+                            {
+                                case MarketPatternFinder.PriceType.Open:
+                                    if( EvaluatePattern(pattern.tickDirection, bars[i + index].Open , bars[i + index - 1].Open)) 
+                                        matches++;
+                                    break;
+                                case MarketPatternFinder.PriceType.High:
+                                    if (EvaluatePattern(pattern.tickDirection, bars[i + index].High, bars[i + index - 1].High))
+                                        matches++;
+                                    break;
+                                case MarketPatternFinder.PriceType.Low:
+                                    if (EvaluatePattern(pattern.tickDirection, bars[i + index].Low, bars[i + index - 1].Low))
+                                        matches++;
+                                    break;
+                                case MarketPatternFinder.PriceType.Close:
+                                    if (EvaluatePattern(pattern.tickDirection, bars[i + index].Close, bars[i + index - 1].Close))
+                                        matches++;
+                                    break;
+                            }
+                        }
+
+                        if (matches == matchesneeded)
+                        {
+                            message += "Matched: " + barKeyPair.Key + " (" + bars[i].BarDate + ") Close: "+ bars[i].Close + Environment.NewLine;
+                            matchedBars++;
+                        }
+
+                        matches = 0;
+                    }
+                    count++;
+                }
+            }
+            watch.Stop();
+            int timeCalc = watch.Elapsed.Seconds;
+            MessageBox.Show(message + Environment.NewLine + "CIAPS.CS retrieval time: " + timeWeb + " seconds. Calculation time " + timeCalc + " seconds. Matched bars: " + matchedBars);
+        }
+
+        private Boolean EvaluatePattern(MarketPatternFinder.TickDirection tickDirection, Decimal now, Decimal previous)
+        {
+            Boolean ret = false;
+            switch (tickDirection)
+            {
+                case MarketPatternFinder.TickDirection.Up:
+                    if (now > previous) return true;
+                    break;
+                case MarketPatternFinder.TickDirection.Down:
+                    if (now < previous) return true;
+                    break;
+                case MarketPatternFinder.TickDirection.NoChange:
+                    if (now == previous) return true;
+                    break;
+            }
+            return ret;
+        }
+
+        private void btnEditPattern_Click(object sender, RibbonControlEventArgs e)
+        {
+            Task[] task = new Task[]  
+                {  
+                    Task.Factory.StartNew(() => EditPattern()),
+                };
+            Task.WaitAll(task);
+
+
+        }        
     }
 }
